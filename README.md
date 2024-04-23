@@ -1,4 +1,5 @@
-# dream-team-app
+It's a bird! It's a plane! No! This is just a warehouse app!
+
 Finální appka pro předmět DBMS.
 
 ### THE TEAM
