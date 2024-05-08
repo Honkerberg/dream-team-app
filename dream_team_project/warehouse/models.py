@@ -13,10 +13,10 @@ class Address(CompositeField):
 
 
 class ShipAddress(CompositeField):
-    street = models.CharField(_("Ship address"), max_length=50)
-    number = models.IntegerField(_("Number"))
-    city = models.CharField(_("City"), max_length=40)
-    postal_code = models.CharField(_("Postal code"), max_length=6)
+    street = models.CharField(_("Ship address"), max_length=50, blank=True)
+    number = models.IntegerField(_("Number"), blank=True)
+    city = models.CharField(_("City"), max_length=40, blank=True)
+    postal_code = models.CharField(_("Postal code"), max_length=6, blank=True)
 
 
 class Person(models.Model):
