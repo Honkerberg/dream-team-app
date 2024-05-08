@@ -76,6 +76,9 @@ class Customer(models.Model):
         verbose_name = _("Customer")
         verbose_name_plural = _("Customers")
 
+    def __str__(self) -> str:
+        return f"{self.person_id}"
+
 
 class Employee(models.Model):
     person_id = models.OneToOneField(Person, on_delete=models.CASCADE)
@@ -95,3 +98,6 @@ class Employee(models.Model):
     class Meta:
         verbose_name = _("Employee")
         verbose_name_plural = _("Employees")
+
+    def __str__(self) -> str:
+        return f"{self.person_id}"
