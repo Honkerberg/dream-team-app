@@ -46,11 +46,14 @@ class Product(models.Model):
     def __str__(self) -> str:
         return f"{self.product_name}"
 
+
 class StockInventory(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(_("Quantity"))
     date_of_acceptance = models.DateField(_("Date of Acceptance"))
-    date_of_manufacture = models.DateField(_("Date of Manufacture"), blank=True, null=True)
+    date_of_manufacture = models.DateField(
+        _("Date of Manufacture"), blank=True, null=True
+    )
     expiration_date = models.DateField(_("Expiration Date"), blank=True, null=True)
 
     def __str__(self) -> str:
