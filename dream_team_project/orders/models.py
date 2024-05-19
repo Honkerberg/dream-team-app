@@ -13,11 +13,17 @@ class Shipping(models.Model):
         decimal_places=2
     )
 
+    def __str__(self) -> str:
+        return f"{self.shipment_name}"
+
 
 class Order(models.Model):
     customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     shipment_id = models.ForeignKey(Shipping, on_delete=models.CASCADE)
     employee_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f"{self.id}" # type: ignore
 
 
 class OrderLines(models.Model):
