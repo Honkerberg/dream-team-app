@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "warehouse.apps.WarehouseConfig",  # main app
+    "products.apps.ProductsConfig", # products app
+    "orders.apps.OrdersConfig",
 ]
 
 MIDDLEWARE = [

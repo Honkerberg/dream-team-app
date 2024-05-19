@@ -11,12 +11,26 @@ class Address(CompositeField):
     city = models.CharField(_("City"), max_length=40)
     postal_code = models.CharField(_("Postal code"), max_length=6)
 
+    def get_proxy(self, model):
+        return super().get_proxy(model)
+
+    class Proxy(CompositeField.Proxy):
+        def __repr__(self):
+            return f"{self.street} {self.number}, {self.city}"
+
 
 class ShipAddress(CompositeField):
     street = models.CharField(_("Ship address"), max_length=50, blank=True)
     number = models.IntegerField(_("Number"), blank=True)
     city = models.CharField(_("City"), max_length=40, blank=True)
     postal_code = models.CharField(_("Postal code"), max_length=6, blank=True)
+
+    def get_proxy(self, model):
+        return super().get_proxy(model)
+
+    class Proxy(CompositeField.Proxy):
+        def __repr__(self):
+            return f"{self.street} {self.number}, {self.postal_code}, {self.city}"
 
 
 class Person(models.Model):
@@ -62,6 +76,9 @@ class Customer(models.Model):
         verbose_name = _("Customer")
         verbose_name_plural = _("Customers")
 
+    def __str__(self) -> str:
+        return f"{self.person_id}"
+
 
 class Employee(models.Model):
     person_id = models.OneToOneField(Person, on_delete=models.CASCADE)
@@ -81,3 +98,6 @@ class Employee(models.Model):
     class Meta:
         verbose_name = _("Employee")
         verbose_name_plural = _("Employees")
+
+    def __str__(self) -> str:
+        return f"{self.person_id}"
