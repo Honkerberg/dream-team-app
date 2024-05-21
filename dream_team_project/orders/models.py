@@ -31,3 +31,7 @@ class OrderLines(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
 
+    @property
+    def get_total_price(self):
+        return self.quantity * self.product_id.currency_converter
+

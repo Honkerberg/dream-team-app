@@ -1,0 +1,41 @@
+{% extends "products/base.html" %}
+
+{% block title %}Kategorie{% endblock %}
+
+{% block content %}
+    <h1>Produkty v dané kategorii</h1>
+    <style>
+        table {
+            width: 45%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Název</th>
+                <th>Výrobce</th>
+                <th>Cena</th>
+                <th>Měna</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in data %}
+                <tr>
+                    <td>{{ d.product_name }}</td>
+                    <td>{{ d.manufacturer_id }}</td>
+                    <td>{{ d.product_price }}</td>
+                    <td>{{ d.product_currency }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

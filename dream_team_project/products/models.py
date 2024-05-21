@@ -8,7 +8,7 @@ class StockPosition(models.Model):
     shelf_name = models.CharField(_("Shelf Name"), max_length=20)
 
     def __str__(self) -> str:
-        return f"{self.rack_name}"
+        return f"{self.rack_name} {self.shelf_name}"
 
 
 class Category(models.Model):
@@ -45,6 +45,17 @@ class Product(models.Model):
 
     def __str__(self) -> str:
         return f"{self.product_name}"
+    
+    @property
+    def currency_converter(self):
+        if self.product_currency == "CZK":
+            return self.product_price
+        elif self.product_currency == "USD":
+            return self.product_price * 23
+        elif self.product_currency == "EUR":
+            return self.product_price * 24
+        else:
+            return self.product_price
 
 
 class StockInventory(models.Model):

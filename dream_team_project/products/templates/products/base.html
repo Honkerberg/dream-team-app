@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DREAM TEAM APP{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+          margin: 0;
+        }
+        
+        .navbar {
+          overflow: hidden;
+          background-color: #333; 
+        }
+        
+        .navbar a {
+          float: left;
+          font-size: 16px;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        .subnav {
+          float: left;
+          overflow: hidden;
+        }
+        
+        .subnav .subnavbtn {
+          font-size: 16px;  
+          border: none;
+          outline: none;
+          color: white;
+          padding: 14px 16px;
+          background-color: inherit;
+          font-family: inherit;
+          margin: 0;
+        }
+        
+        .navbar a:hover, .subnav:hover .subnavbtn {
+          background-color: red;
+        }
+        
+        .subnav-content {
+          display: none;
+          position: absolute;
+          left: 0;
+          background-color: red;
+          width: 100%;
+          z-index: 1;
+        }
+        
+        .subnav-content a {
+          float: left;
+          color: white;
+          text-decoration: none;
+        }
+        
+        .subnav-content a:hover {
+          background-color: #eee;
+          color: black;
+        }
+        
+        .subnav:hover .subnav-content {
+          display: block;
+        }
+        </style>
+        </head>
+
+          
+        <div class="navbar" id="myNavbar">
+            <a href="{% url "home" %}">Domů</a>
+            <a href="{% url "prod" %}">Produkty</a>
+            <a href="{% url "category-list" %}">Kategorie</a>
+            <a href="{% url "order-list" %}">Objednávky</a>
+            <a href="{% url "team" %}">O týmu</a>
+            <a href="javascript:void(0);" class="icon" onclick="toggleNavbar()">&#9776;</a>
+        </div>
+        
+            <script>
+            function toggleNavbar() {
+                var x = document.getElementById("myNavbar");
+                if (x.className === "navbar") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "navbar";
+                }
+            }
+        </script>
+
+
+
+    {% block content %}
+        <p>Vítejte na stránce dream týmu číslo 3!</p>
+    {% endblock %}
+</body>
+</html>

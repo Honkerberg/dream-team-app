@@ -1,0 +1,50 @@
+{% extends "products/base.html" %}
+
+{% block title %}Detail objednávky{% endblock %}
+
+{% block content %}
+    <style>
+        table {
+            width: 55%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+    <h1>Detail objednávky</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Řádek objednávky</th>
+                <th>Název produktu</th>
+                <th>Množství</th>
+                <th>Cena za kus</th>
+                <th>Celková cena</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ order.product_name }}</td>
+                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.product_price }}</td>
+                    <td>{{ order.total_price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% comment %} {% for order in data %}
+    <p>Číslo řádku: {{ order.id }}</p>
+    <p>Produkt: {{ order.product_id }}</p>
+    <p>Množství: {{ order.quantity }}</p>
+    <p>cena: {{ order.product_id.product_price }}</p>
+    {% endfor %} {% endcomment %}
+{% endblock %}

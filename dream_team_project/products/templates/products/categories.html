@@ -1,0 +1,11 @@
+{% extends "products/base.html" %}
+
+{% block title %}Kategorie{% endblock %}
+
+{% block content %}
+    <h1>Výpis kategorií</h1>
+    {% for c in categories %}
+    <li><a href="{% url "category-detail" pk=c.id %}">{{ c.category_name }}</a></li>
+    {% endfor %}
+
+{% endblock %}

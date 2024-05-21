@@ -1,0 +1,10 @@
+{% extends "products/base.html" %}
+
+{% block title %}Orders{% endblock %}
+
+{% block content %}
+    <h1>Všechny objednávky</h1>
+    {% for o in orders %}
+    <li><a href="{% url "order-detail" pk=o.id %}">Objednávka {{ o }}</a></li>
+    {% endfor %}
+{% endblock %}
